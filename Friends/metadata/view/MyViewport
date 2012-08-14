@@ -1,0 +1,70 @@
+{
+    "type": "viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MyViewport",
+        "designer|initialView": true,
+        "layout": "border"
+    },
+    "id": "ExtBox1-ext-gen9432",
+    "designerId": "a0076285-c357-4423-9a23-7867f365c9bc",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "friends",
+                "id": "friendsPanel",
+                "layout|flex": 1,
+                "layout|region": "center"
+            },
+            "designerId": "1d1aa531-cbb1-4bc6-9502-12f6a85f3d29",
+            "masterInstanceId": "ExtBox1-ext-gen23676",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "onFriendsAfterRender",
+                        "fn": "onFriendsAfterRender",
+                        "implHandler": [
+                            "abstractcomponent.setLoading('Loading friends list...');"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "designerId": "7e799a21-2c9c-4d90-9de9-1c7f0f691d66"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "info",
+                "id": "infoPanel",
+                "layout|flex": 5,
+                "layout|region": "east",
+                "layout|split": true
+            },
+            "designerId": "93d25768-4497-4e40-9b97-82ab0b1dbecb",
+            "masterInstanceId": "ExtBox1-ext-gen17800"
+        }
+    ]
+}

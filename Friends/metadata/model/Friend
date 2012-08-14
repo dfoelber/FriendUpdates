@@ -1,0 +1,182 @@
+{
+    "type": "datamodel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Friend"
+    },
+    "id": "ExtBox1-ext-gen30146",
+    "designerId": "b034358f-b242-4179-8703-1f2e2a7758c6",
+    "cn": [
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField",
+                "name": "id"
+            },
+            "designerId": "e9318db8-bc91-4b21-b0aa-12ba3d22abd1"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField1",
+                "name": "name"
+            },
+            "designerId": "c1aba30f-f31c-43a8-b301-401ce2af8f16"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField2",
+                "defaultValue": [
+                    "0"
+                ],
+                "name": "relevance",
+                "type": "int"
+            },
+            "designerId": "2e1d8273-8c90-44df-9085-8f34e6999cd6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "getPictureUrl",
+                "fn": "getPictureUrl",
+                "designer|params": [
+                    "size"
+                ],
+                "implHandler": [
+                    "var me = this,",
+                    "    url;",
+                    "",
+                    "size = size || 'normal';",
+                    "url = Ext.String.format('http://graph.facebook.com/{0}/picture?type={1}', this.get('id'), size);",
+                    "",
+                    "me.set('picture_url', url);",
+                    ""
+                ]
+            },
+            "designerId": "97ee9579-f995-45aa-835a-8c70bace9c5b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "getMutualFriendsCount",
+                "fn": "getMutualFriendsCount",
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "me.fql(Ext.String.format(\"select mutual_friend_count from user where uid={0}\", me.get('id')), function(resp) {",
+                    "me.set('mutual_friends_count', resp.data[0].mutual_friend_count);",
+                    "});",
+                    ""
+                ]
+            },
+            "designerId": "bb3b6917-c3af-43d6-9d8c-9d819d1dc6a8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "fql",
+                "fn": "fql",
+                "designer|params": [
+                    "query",
+                    "callback"
+                ],
+                "implHandler": [
+                    "var me = this,",
+                    "    fql = Ext.Object.toQueryString({",
+                    "        q: Ext.String.format(query)",
+                    "    });",
+                    "",
+                    "FB.api('/fql?' + fql, function(response) { ",
+                    "    if (Ext.isFunction(callback)) {",
+                    "        callback.call(me, response);",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "834dae4c-29a5-46f7-823b-773667047963"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField3",
+                "name": "mutual_friends_count",
+                "type": "int"
+            },
+            "designerId": "934db074-6cc6-4177-94c8-d871addaf23f"
+        },
+        {
+            "type": "datafield",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyField4",
+                "name": "picture_url"
+            },
+            "designerId": "8980ee5e-a38f-4607-95f8-68d529055efa"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "getAll",
+                "fn": "getAll",
+                "implHandler": [
+                    "// populate the fields in this model instance ",
+                    "",
+                    "var me = this;",
+                    "",
+                    "me.getPictureUrl();",
+                    "me.getMutualFriendsCount();"
+                ]
+            },
+            "designerId": "00691e9e-1770-4f36-abfc-e0d489e12064"
+        }
+    ]
+}

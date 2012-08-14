@@ -1,0 +1,118 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "api": "/me/friends",
+        "designer|userClassName": "Friends",
+        "storeId": "friends",
+        "model": "Friend"
+    },
+    "id": "ExtBox1-ext-gen39068",
+    "designerId": "81f74f01-a29b-43cb-87f9-4d62de4ea255",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "api",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loadFromFb",
+                "fn": "loadFromFb",
+                "designer|params": [
+                    "api"
+                ],
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "FB.api(api, function(response) {",
+                    "    me.loadRawData(response);",
+                    "});"
+                ]
+            },
+            "designerId": "c747dd32-125e-4634-9919-b793b6cca171"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "load",
+                "fn": "load",
+                "implHandler": [
+                    "// override this function",
+                    "this.loadFromFb(this.api);"
+                ]
+            },
+            "designerId": "720a8464-d2e9-45d2-970c-2a9e904a4c4a"
+        },
+        {
+            "type": "memoryproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyMemoryProxy"
+            },
+            "designerId": "364e2b09-d493-4750-b67c-71ca9e524daa",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader",
+                        "root": "data"
+                    },
+                    "designerId": "24e2a9ea-79a8-4536-b861-a1b466991da7"
+                }
+            ]
+        },
+        {
+            "type": "sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MySorter",
+                "id": "relevance"
+            },
+            "designerId": "d948059d-e1b9-4d44-892e-1d6da11ae709"
+        },
+        {
+            "type": "sorter",
+            "reference": {
+                "name": "sorters",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MySorter1",
+                "property": "name"
+            },
+            "designerId": "65f95e47-7d67-49e5-8b16-1ce7ba423870"
+        }
+    ]
+}

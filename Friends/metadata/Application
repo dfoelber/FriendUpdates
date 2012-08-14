@@ -1,0 +1,31 @@
+{
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Friend",
+            "Status"
+        ],
+        "stores": [
+            "FacebookApiStore",
+            "Friends",
+            "Statuses"
+        ],
+        "views": [
+            "Friends",
+            "MyViewport"
+        ],
+        "autoCreateViewport": true,
+        "name": "Friends",
+        "controllers": [
+            "Facebook",
+            "Friends"
+        ]
+    },
+    "id": "ExtBox1-ext-gen5356",
+    "designerId": "application"
+}

@@ -1,0 +1,122 @@
+{
+    "name": "Friends",
+    "settings": {
+        "urlPrefix": "http://localhost/My/Friends",
+        "spacesToIndent": 4,
+        "exportPath": "",
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false
+    },
+    "xdsVersion": "2.0.0",
+    "xdsBuild": 575,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000495,
+    "framework": "ext41",
+    "topInstanceFileMap": {
+        "c847e0ca-0c84-400e-8535-d3e8c07dc9c9": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "a0076285-c357-4423-9a23-7867f365c9bc": {
+            "paths": [
+                "metadata/view/MyViewport",
+                "app/view/override/MyViewport.js",
+                "app/view/MyViewport.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "MyViewport"
+        },
+        "690d701f-3b49-45c3-abf3-e94c0b8bdca7": {
+            "paths": [
+                "metadata/controller/Facebook",
+                "app/controller/override/Facebook.js",
+                "app/controller/Facebook.js"
+            ],
+            "className": "Facebook"
+        },
+        "b034358f-b242-4179-8703-1f2e2a7758c6": {
+            "paths": [
+                "metadata/model/Friend",
+                "app/model/override/Friend.js",
+                "app/model/Friend.js"
+            ],
+            "className": "Friend"
+        },
+        "3b65fcfc-c837-4f9d-b3db-dbc03bf67684": {
+            "paths": [
+                "metadata/controller/Friends",
+                "app/controller/override/Friends.js",
+                "app/controller/Friends.js"
+            ],
+            "className": "Friends"
+        },
+        "81f74f01-a29b-43cb-87f9-4d62de4ea255": {
+            "paths": [
+                "metadata/store/Friends",
+                "app/store/override/Friends.js",
+                "app/store/Friends.js"
+            ],
+            "className": "Friends"
+        },
+        "68dd5a88-7c6d-4f65-839e-72084bd48115": {
+            "paths": [
+                "metadata/view/Info",
+                "app/view/override/Info.js",
+                "app/view/Info.js"
+            ],
+            "className": "Info"
+        },
+        "2139a95e-f0d2-4119-bff4-83a42cc9a103": {
+            "paths": [
+                "metadata/view/Friends",
+                "app/view/override/Friends.js",
+                "app/view/Friends.js"
+            ],
+            "className": "Friends"
+        },
+        "a865cdae-b8e9-4411-bae4-41dde6029151": {
+            "paths": [
+                "metadata/store/Statuses",
+                "app/store/override/Statuses.js",
+                "app/store/Statuses.js"
+            ],
+            "className": "Statuses"
+        },
+        "1ea48dd2-e27e-4b4c-8f1a-64c32c0a26e9": {
+            "paths": [
+                "metadata/model/Status",
+                "app/model/override/Status.js",
+                "app/model/Status.js"
+            ],
+            "className": "Status"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "a0076285-c357-4423-9a23-7867f365c9bc",
+            "68dd5a88-7c6d-4f65-839e-72084bd48115",
+            "2139a95e-f0d2-4119-bff4-83a42cc9a103"
+        ],
+        "store": [
+            "a865cdae-b8e9-4411-bae4-41dde6029151",
+            "81f74f01-a29b-43cb-87f9-4d62de4ea255"
+        ],
+        "controller": [
+            "690d701f-3b49-45c3-abf3-e94c0b8bdca7",
+            "3b65fcfc-c837-4f9d-b3db-dbc03bf67684"
+        ],
+        "model": [
+            "b034358f-b242-4179-8703-1f2e2a7758c6",
+            "1ea48dd2-e27e-4b4c-8f1a-64c32c0a26e9"
+        ],
+        "resource": [
+            "c847e0ca-0c84-400e-8535-d3e8c07dc9c9"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

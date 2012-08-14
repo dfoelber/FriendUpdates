@@ -1,0 +1,116 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "api": "/statuses?fields=message",
+        "userId": null,
+        "designer|userClassName": "Statuses",
+        "storeId": "feeds",
+        "model": "Status"
+    },
+    "id": "ExtBox1-ext-gen49786",
+    "designerId": "a865cdae-b8e9-4411-bae4-41dde6029151",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "api",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "userId",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loadFromFb",
+                "fn": "loadFromFb",
+                "designer|params": [
+                    "api"
+                ],
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "FB.api(api, function(response) {",
+                    "    me.loadRawData(response);",
+                    "});"
+                ]
+            },
+            "designerId": "d8bb6957-3276-4172-a3f3-342aa94b7c9c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "load",
+                "fn": "load",
+                "implHandler": [
+                    "this.loadFromFb('/' + this.userId + this.api);"
+                ]
+            },
+            "designerId": "4c2ecff1-54b6-44d6-a049-669c0ebc2ba0"
+        },
+        {
+            "type": "memoryproxy",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyMemoryProxy"
+            },
+            "designerId": "911f0f00-13ad-41ca-8895-872be9468cf0",
+            "cn": [
+                {
+                    "type": "jsonreader",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyJsonReader",
+                        "root": "data"
+                    },
+                    "designerId": "00e7127a-e08d-49d4-96ee-7e2ffae98198"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "setUserId",
+                "fn": "setUserId",
+                "designer|params": [
+                    "userId"
+                ],
+                "implHandler": [
+                    "this.userId = userId;"
+                ]
+            },
+            "designerId": "cf15d41f-f18e-4b37-a866-e13414979155"
+        }
+    ]
+}

@@ -1,0 +1,164 @@
+{
+    "type": "panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userClassName": "Info",
+        "designer|userAlias": "info",
+        "id": null,
+        "layout": "vbox",
+        "title": "Info"
+    },
+    "id": "ExtBox1-ext-gen17800",
+    "designerId": "68dd5a88-7c6d-4f65-839e-72084bd48115",
+    "cn": [
+        {
+            "type": "panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "designer|userClassName": "MyPanel4",
+                "height": 151,
+                "layout": "hbox",
+                "title": null
+            },
+            "designerId": "7811932c-d13a-4bb8-a583-b9672143d465",
+            "cn": [
+                {
+                    "type": "image",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "designer|userClassName": "MyImg",
+                        "height": null,
+                        "id": "profilePic",
+                        "maxWidth": 200,
+                        "width": null
+                    },
+                    "designerId": "853abd0b-f65f-4f8a-819a-bc4f311a6a14"
+                },
+                {
+                    "type": "container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 3,
+                        "layout|margins": "0 0 0 200px",
+                        "designer|userClassName": "MyContainer",
+                        "height": 60,
+                        "id": "info",
+                        "width": 140,
+                        "layout": null
+                    },
+                    "designerId": "8b084051-975b-4903-91f1-b9fd17eb5f42",
+                    "cn": [
+                        {
+                            "type": "template",
+                            "reference": {
+                                "name": "tpl",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "tpl",
+                                "implHandler": [
+                                    "<h1>{name}</h1>",
+                                    "<h2>Mutual friends: {mutual_friends_count}</h2>"
+                                ],
+                                "designer|displayName": "tpl"
+                            },
+                            "designerId": "a4d647e2-2d73-4f05-90b1-9bba754e83b0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "updateImage",
+                "fn": "updateImage",
+                "designer|params": [
+                    "src"
+                ],
+                "implHandler": [
+                    "this.queryById('profilePic').setSrc(src);"
+                ]
+            },
+            "designerId": "0b9e3d7c-3615-4977-b1ba-0dab2018db65"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "updateInfo",
+                "fn": "updateInfo",
+                "designer|params": [
+                    "friend"
+                ],
+                "implHandler": [
+                    "this.queryById('info').update(friend.getData());"
+                ]
+            },
+            "designerId": "4f3cb339-288f-4609-9fcf-0b8d69195e60"
+        },
+        {
+            "type": "gridpanel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "designer|userClassName": "MyGridPanel2",
+                "id": "statusesPanel",
+                "title": "Recent status updates",
+                "hideHeaders": true,
+                "store": "Statuses"
+            },
+            "designerId": "b9c068b6-c1f4-4047-b10b-fca1c6c61101",
+            "cn": [
+                {
+                    "type": "gridcolumn",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MyColumn1",
+                        "dataIndex": "message",
+                        "flex": 1,
+                        "text": "String"
+                    },
+                    "designerId": "3acb6bfa-b9e1-4467-aacc-e613a10c7970"
+                }
+            ]
+        }
+    ]
+}

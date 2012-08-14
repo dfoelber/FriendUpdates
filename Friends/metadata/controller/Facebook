@@ -1,0 +1,135 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "fbPermissions": "friends_status,friends_about_me",
+        "designer|userClassName": "Facebook"
+    },
+    "id": "ExtBox1-ext-gen18341",
+    "designerId": "690d701f-3b49-45c3-abf3-e94c0b8bdca7",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "fbPermissions",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onLaunch",
+                "fn": "onLaunch",
+                "implHandler": [
+                    "this.loadFb(this.onFbLoaded);"
+                ]
+            },
+            "designerId": "c52667f0-b284-4d9c-b3f1-0249553c355d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onFbLoaded",
+                "fn": "onFbLoaded",
+                "implHandler": [
+                    "console.log('onFbLoaded');",
+                    "var me = this;",
+                    "",
+                    "FB.Event.subscribe('auth.statusChange', function(response) {",
+                    "    console.log('The status of the session is: ' + response.status);",
+                    "    if (response.status === 'connected') {",
+                    "        me.application.fireEvent('fb:ready');",
+                    "    } else {",
+                    "        Ext.Msg.confirm('This app requires Facebook authentication', 'Do you want to authorize this app?', function(btn){",
+                    "            if (btn === 'yes') {",
+                    "                me.fbLogin();",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "});",
+                    "",
+                    ""
+                ]
+            },
+            "designerId": "8bd76131-f446-423f-a7b2-a32d33cc99cf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loadFb",
+                "fn": "loadFb",
+                "designer|params": [
+                    "callback"
+                ],
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "window.fbAsyncInit = function() {",
+                    "    FB.init({",
+                    "        appId      : '356768871063192', // App ID",
+                    "        status     : true, // check login status",
+                    "        cookie     : true, // enable cookies to allow the server to access the session",
+                    "        xfbml      : true  // parse XFBML",
+                    "    });",
+                    "",
+                    "    // Additional initialization code here",
+                    "    console.log('FB JS SDK loaded');",
+                    "",
+                    "    if (Ext.isFunction(callback)) {",
+                    "        callback.call(me);",
+                    "    }",
+                    "};",
+                    "",
+                    "// Load the SDK Asynchronously",
+                    "(function(d){",
+                    "    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];",
+                    "    if (d.getElementById(id)) {return;}",
+                    "    js = d.createElement('script'); js.id = id; js.async = true;",
+                    "    js.src = \"//connect.facebook.net/en_US/all.js\";",
+                    "    ref.parentNode.insertBefore(js, ref);",
+                    "}(document));"
+                ]
+            },
+            "designerId": "df47e90f-6407-47ce-ac2e-52d2282f6c51"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "fbLogin",
+                "fn": "fbLogin",
+                "implHandler": [
+                    "var me = this;",
+                    "",
+                    "FB.login(function(response){",
+                    "    console.log(response);",
+                    "}, {scope: me.fbPermissions});"
+                ]
+            },
+            "designerId": "98dc3757-30d6-4681-8107-c956146d96af"
+        }
+    ]
+}

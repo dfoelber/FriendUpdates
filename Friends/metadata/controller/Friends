@@ -1,0 +1,267 @@
+{
+    "type": "controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Friends",
+        "models": [
+            "Friend"
+        ],
+        "stores": [
+            "Friends",
+            "Statuses"
+        ],
+        "views": [
+            "Friends",
+            "Info"
+        ]
+    },
+    "id": "ExtBox1-ext-gen34215",
+    "designerId": "3b65fcfc-c837-4f9d-b3db-dbc03bf67684",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onSearchFieldChange",
+                "fn": "onSearchFieldChange",
+                "implHandler": [
+                    "var me = this,",
+                    "    friends = me.getFriendsStore();",
+                    "",
+                    "if (Ext.isEmpty(newValue)) { ",
+                    "    friends.clearFilter();",
+                    "} else {",
+                    "    friends.filterBy(function(friend) {",
+                    "        return friend.get('name').toLowerCase().search(newValue.toLowerCase()) > -1;",
+                    "    });",
+                    "}"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.Text",
+                "designer|controlQuery": "#search"
+            },
+            "designerId": "6ade3199-bef4-42bd-856e-11a1743304b5"
+        },
+        {
+            "type": "applicationaction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "loadStore",
+                "fn": "loadStore",
+                "implHandler": [
+                    "// This function is called only when the Facebook API is ready",
+                    "",
+                    "var me = this,",
+                    "    friends = me.getFriendsStore();",
+                    "",
+                    "friends.on('load', function() {",
+                    "    me.getFriendsPanel().setLoading(false);",
+                    "}, me, {single: true});",
+                    "",
+                    "    friends.load();",
+                    "",
+                    ""
+                ],
+                "name": "fb:ready",
+                "scope": "this"
+            },
+            "designerId": "a7eec0c7-3c77-4f9d-af4b-32df612900f6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onFriendsPanelSelectionChange",
+                "fn": "onFriendsPanelSelectionChange",
+                "implHandler": [
+                    "var me = this,",
+                    "    statuses = me.getStatusesStore(),",
+                    "    friend;",
+                    "",
+                    "",
+                    "if (selections.length === 0) {",
+                    "    return;",
+                    "}",
+                    "",
+                    "friend = selections[0];",
+                    "friend.getAll();",
+                    "this.updateInfoPanel(friend);",
+                    "",
+                    "me.getStatusesPanel().setLoading('Loading statuses');",
+                    "",
+                    "statuses.on('load', function() {",
+                    "    me.getStatusesPanel().setLoading(false);",
+                    "}, me, {single: true});",
+                    "",
+                    "",
+                    "statuses.setUserId(friend.get('id'));",
+                    "statuses.load();",
+                    "",
+                    ""
+                ],
+                "name": "selectionchange",
+                "scope": "me",
+                "designer|targetType": "Ext.grid.Panel",
+                "designer|controlQuery": "#friendsPanel"
+            },
+            "designerId": "14882543-8322-42f5-9844-6b997bde3086"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "infoPanel",
+                "ref": "infoPanel",
+                "selector": "#infoPanel"
+            },
+            "designerId": "0c035635-295a-4a6b-90c8-d18c5e9bb6bf"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "friendsPanel",
+                "ref": "friendsPanel",
+                "selector": "#friendsPanel"
+            },
+            "designerId": "6c19e46a-9dd4-46f0-9bf9-95749b27aab2"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "init",
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    "this.getFriendsStore().on({",
+                    "    update: {",
+                    "        fn: this.onFriendUpdate,",
+                    "        scope: this",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "243174db-1c70-4144-9080-93b1369a4611"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "onFriendUpdate",
+                "fn": "onFriendUpdate",
+                "designer|params": [
+                    "store",
+                    "record",
+                    "operation",
+                    "modifiedFieldNames"
+                ],
+                "implHandler": [
+                    "// This function is called when a model in the store is updated. ",
+                    "// We're doing this because Facebook API calls are asynchronous.",
+                    "",
+                    "var me = this;",
+                    "",
+                    "me.updateInfoPanel(record, modifiedFieldNames);",
+                    ""
+                ]
+            },
+            "designerId": "10e488b9-a1e7-4a94-b679-ce6e9b793a46"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "updateInfoPanel",
+                "fn": "updateInfoPanel",
+                "designer|params": [
+                    "friend",
+                    "fields"
+                ],
+                "implHandler": [
+                    "var me = this,",
+                    "    infoPanel = me.getInfoPanel(),",
+                    "    map = {",
+                    "        'picture_url': function() {",
+                    "            infoPanel.updateImage(friend.get('picture_url'));",
+                    "    },",
+                    "    'name': function() {",
+                    "        infoPanel.updateInfo(friend);",
+                    "    },",
+                    "    'mutual_friends_count': function(){",
+                    "        infoPanel.updateInfo(friend);",
+                    "    }",
+                    "};",
+                    "",
+                    "",
+                    "if (Ext.isArray(fields)) {",
+                    "    Ext.Array.each(fields, function(field) {",
+                    "        if (Ext.isFunction(map[field])) {",
+                    "            map[field].call(this);",
+                    "        }",
+                    "    });",
+                    "} else {",
+                    "    Ext.Object.each(map, function(field, fn) {",
+                    "        fn.call(this);",
+                    "    });",
+                    "}",
+                    ""
+                ]
+            },
+            "designerId": "fbc43358-fdc2-4938-9ee6-959bfdab49a0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "statusesPanel",
+                "ref": "statusesPanel",
+                "selector": "#statusesPanel"
+            },
+            "designerId": "3c82b04c-c49d-4b79-946b-735a764d064a"
+        }
+    ]
+}

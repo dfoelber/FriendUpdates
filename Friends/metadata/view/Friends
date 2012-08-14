@@ -1,0 +1,53 @@
+{
+    "type": "gridpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Friends",
+        "designer|userAlias": "friends",
+        "id": null,
+        "width": null,
+        "title": "Friends",
+        "hideHeaders": true,
+        "store": "Friends"
+    },
+    "id": "ExtBox1-ext-gen23676",
+    "designerId": "2139a95e-f0d2-4119-bff4-83a42cc9a103",
+    "cn": [
+        {
+            "type": "textfield",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "designer|userClassName": "MyTextField",
+                "id": "search",
+                "width": null,
+                "fieldLabel": null,
+                "emptyText": "Enter a name to filter..."
+            },
+            "designerId": "7a737f99-1827-466d-aa63-2a4feba76b38"
+        },
+        {
+            "type": "gridcolumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyColumn",
+                "dataIndex": "name",
+                "flex": 1,
+                "text": "String"
+            },
+            "designerId": "204d9510-b257-4572-8291-24173862864c"
+        }
+    ]
+}
