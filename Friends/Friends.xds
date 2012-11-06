@@ -4,14 +4,15 @@
         "urlPrefix": "http://localhost/My/Friends",
         "spacesToIndent": 4,
         "exportPath": "",
+        "sdkPath": "",
         "lineEnding": "LF",
         "genTimestamps": false,
         "cacheBust": false
     },
-    "xdsVersion": "2.0.0",
-    "xdsBuild": 575,
+    "xdsVersion": "2.1.0",
+    "xdsBuild": 670,
     "schemaVersion": 1,
-    "upgradeVersion": 210000000495,
+    "upgradeVersion": 210000000498,
     "framework": "ext41",
     "topInstanceFileMap": {
         "c847e0ca-0c84-400e-8535-d3e8c07dc9c9": {

@@ -46,10 +46,10 @@
             "codeClass": null,
             "userConfig": {
                 "designer|userClassName": "MyField2",
+                "name": "relevance",
                 "defaultValue": [
                     "0"
                 ],
-                "name": "relevance",
                 "type": "int"
             },
             "designerId": "2e1d8273-8c90-44df-9085-8f34e6999cd6"
